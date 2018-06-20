@@ -1,0 +1,8 @@
+.card {
+    width:20%;
+    height:20vh;
+    background-color: blue;
+    border-radius: 2px;
+    margin: 2px;
+    color:transparent;
+}
