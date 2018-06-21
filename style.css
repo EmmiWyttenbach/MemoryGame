@@ -1,8 +1,18 @@
 .card {
     width:20%;
-    height:20vh;
-    background-color: blue;
+    height:23.5vh;
     border-radius: 2px;
     margin: 2px;
     color:transparent;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+.clicked {
+    width:20%;
+    height:20vh;
+    border-radius: 2px;
+    margin: 2px;
+    background-repeat: no-repeat;
+    background-size:cover;
 }

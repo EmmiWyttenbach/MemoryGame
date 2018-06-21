@@ -1,0 +1,79 @@
+<header> 
+<link rel = "stylesheet" type = "text/css" href = "style.css" />
+</header>   
+    <body>
+        <div id = "a">
+            <input type = "button" class = "card" id = "a0"/>
+            <input type = "button" class = "card" id = "a1"/>
+            <input type = "button" class = "card" id = "a2"/>
+            <input type = "button" class = "card" id = "a3"/>
+        </div>
+        <div id = "b">
+            <input type = "button" class = "card" id = "b0"/>
+            <input type = "button" class = "card" id = "b1"/>
+            <input type = "button" class = "card" id = "b2"/>
+            <input type = "button" class = "card" id = "b3"/>
+        </div>
+        <div id = "c">
+            <input type = "button" class = "card" id = "c0"/>
+            <input type = "button" class = "card" id = "c1"/>
+            <input type = "button" class = "card" id = "c2"/>
+            <input type = "button" class = "card" id = "c3"/>
+        </div>
+        <div id = "d">
+            <input type = "button" class = "card" id = "d0"/>
+            <input type = "button" class = "card" id = "d1"/>
+            <input type = "button" class = "card" id = "d2"/>
+            <input type = "button" class = "card" id = "d3"/>
+        </div>
+    </body>
+    <footer>
+        <script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src = "script.js"></script>
+        <script language = "javascript">
+            $(document).ready(randomizeCards);
+             $(document).ready(function() {
+                 var countClicks = 0;
+                 $('.card').on('click', function() {
+                     if(countClicks == 0)
+                     {
+                        document.getElementById(this.id).style.color = "white";
+                        document.getElementById(this.id).className += " clicked";
+                        countClicks++;
+                     }
+                     else if(countClicks == 1)
+                     {
+                         let firstElementClicked = document.getElementsByClassName('clicked');
+
+                         if(document.getElementById(this.id) != firstElementClicked[0])
+                         {
+                            document.getElementById(this.id).style.color = "white";
+                            document.getElementById(this.id).className += " clicked";
+                            countClicks++;
+                         }
+                     }
+                     if(countClicks == 2)
+                     {
+                     setTimeout(function(){
+                        var listOfClickedCards = document.getElementsByClassName("clicked");
+                        if(listOfClickedCards[0].value != listOfClickedCards[1].value)
+                        {
+                            listOfClickedCards[0].style.color = "transparent";
+                            listOfClickedCards[1].style.color = "transparent";
+                        }
+                        else
+                        {
+                            alert("good job they match");
+                        }
+                        listOfClickedCards[0].className = 'card';
+                        listOfClickedCards[0].className = 'card';
+                        countClicks = 0;
+                        console.log(listOfClickedCards.length);
+                        }, 2000);
+                    } 
+                    
+                 });
+                 
+        });
+        </script>
+    </footer>
