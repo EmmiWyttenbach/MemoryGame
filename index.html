@@ -34,7 +34,9 @@
                 <p>Click two cards to turn them over. If they match, they will remain face up. 
                     Otherwise, they will flip back over. Try to remember what was on each card 
                     and where it was.</p>
-                <input type = "button" id = "startButton" value = "Click to Start Game" /> 
+                <input id = "startButton" value = "Number of matches: " /> 
+                <input type = "button" id = "startButtonEasy" value = "Easy" /> 
+                <input type = "button" id = "startButtonHard" value = "Hard" /> 
             </div>
        </div>
     </body>
@@ -44,8 +46,14 @@
         <script language = "javascript">
             $(document).ready(randomizeCards);
             $(document).ready(function () {
-                $('#startButton').on('click', gameLogic);
+                $('#startButtonEasy').on('click', gameLogic());//(false));
+              //  $('#startButtonHard').on('click', gameLogic);// console.log('HI'));
+              //  $('#startButtonHard').on('click', gameLogic(false));
             //$(document).ready(gameLogic);
             });
+
+            // $(document).ready(function () {
+            //     $('#startButtonHard').on('click', gameLogic(false));
+            // });
         </script>
     </footer>

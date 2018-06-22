@@ -47,11 +47,10 @@
          }
     }
 
- var gameLogic = function() {
+function gameLogic(easy) {
         var countClicks = 0;
         setTimeout(startGame,10);
-        setTimeout(checkIfGameFinished,10);
-        var whiteBackground = "https://kids.nationalgeographic.com/content/dam/kids/photos/games/Hub%20promos/memory.ngsversion.1438028331698.adapt.1900.1.png";
+        
         //"https://currys-ssl.cdn.dixons.com/grafx/images/blank.gif";
         $('.card').on('click', function() {
 
@@ -66,7 +65,7 @@
                 //document.getElementById(this.id).style.color = "black";
                 document.getElementById(this.id).className += " clicked";
                 countClicks++;
-                // setTimeout(checkIfGameFinished,10);
+                 setTimeout(checkIfGameFinished,10);
             }
             else if(countClicks == 1)
             {
@@ -86,24 +85,50 @@
             }
             if(countClicks == 2)
             {
-            setTimeout(function(){
-               var listOfClickedCards = document.getElementsByClassName("clicked");
-               if(listOfClickedCards[0].value != listOfClickedCards[1].value)
-               {
-                   listOfClickedCards[0].style.backgroundImage = "url('" + whiteBackground + "')";
-                   listOfClickedCards[1].style.backgroundImage = "url('" + whiteBackground + "')";
-               }
-            //    else
-            //    {
-            //        alert("good job they match");
-            //    }
-               listOfClickedCards[0].className = 'card';
-               listOfClickedCards[0].className = 'card';
-               countClicks = 0;
-               }, 1000);
+                if(easy==1)
+                {
+                    setTimeout(checkIfMatchEasy, 1000);
+                }
+                else
+                {
+                    setTimeout(checkIfMatchHard, 1000);
+                }
+            countClicks = 0;
            } 
+           //setTimeout(checkIfGameFinished,10);
         });
+        
 }
+
+var checkIfMatchEasy = function(){
+    var numMatches = 0;
+    var whiteBackground = "https://kids.nationalgeographic.com/content/dam/kids/photos/games/Hub%20promos/memory.ngsversion.1438028331698.adapt.1900.1.png";
+    var listOfClickedCards = document.getElementsByClassName("clicked");
+    if(listOfClickedCards[0].value != listOfClickedCards[1].value)
+    {
+        listOfClickedCards[0].style.backgroundImage = "url('" + whiteBackground + "')";
+        listOfClickedCards[1].style.backgroundImage = "url('" + whiteBackground + "')";
+    }
+    else
+    {
+        numMatches++;
+    }
+    listOfClickedCards[0].className = 'card';
+    listOfClickedCards[0].className = 'card';
+    //countClicks = 0;
+    }
+
+    var checkIfMatchHard = function(){
+        var whiteBackground = "https://kids.nationalgeographic.com/content/dam/kids/photos/games/Hub%20promos/memory.ngsversion.1438028331698.adapt.1900.1.png";
+        var listOfClickedCards = document.getElementsByClassName("clicked");
+
+        listOfClickedCards[0].style.backgroundImage = "url('" + whiteBackground + "')";
+        listOfClickedCards[1].style.backgroundImage = "url('" + whiteBackground + "')";
+
+        listOfClickedCards[0].className = 'card';
+        listOfClickedCards[0].className = 'card';
+        //countClicks = 0;
+        }
 
 var checkIfGameFinished = function()
 {
@@ -130,14 +155,20 @@ var checkIfGameFinished = function()
             {
                 id = "d"+i;
             }
-            var urlReturnVal = $(id).css('background-image');
-            var urlEndVal = urlReturnVal.length - 1;
-            var url = urlReturnVal.substring(4,urlEndVal);
-            listOfUrls[counter] = url;
+           // var urlReturnVal = $(id).css('background-image');
+            //document.getElementById(id).src;
+            //$(id).css('background-image');
+           // var urlEndVal = urlReturnVal.length - 1;
+           // var url = urlReturnVal.substring(4,urlEndVal);
+           // console.log("url: "+urlReturnVal);
+            console.log("id: " + id);
+           // listOfUrls[counter] = url;
             counter++;
         }
     }
-    alert(listOfUrls);
+    var urlReturnVal = document.getElementById("a0").src;
+    console.log("url: "+urlReturnVal);
+    //console.log("listOfUrls: " + listOfUrls + "counter: "+ counter);
 }
 
 var startGame = function() 
