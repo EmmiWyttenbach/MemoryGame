@@ -2,36 +2,50 @@
 <link rel = "stylesheet" type = "text/css" href = "style.css" />
 </header>   
     <body>
-        <div id = "a">
-            <input type = "button" class = "card" id = "a0"/>
-            <input type = "button" class = "card" id = "a1"/>
-            <input type = "button" class = "card" id = "a2"/>
-            <input type = "button" class = "card" id = "a3"/>
-        </div>
-        <div id = "b">
-            <input type = "button" class = "card" id = "b0"/>
-            <input type = "button" class = "card" id = "b1"/>
-            <input type = "button" class = "card" id = "b2"/>
-            <input type = "button" class = "card" id = "b3"/>
-        </div>
-        <div id = "c">
-            <input type = "button" class = "card" id = "c0"/>
-            <input type = "button" class = "card" id = "c1"/>
-            <input type = "button" class = "card" id = "c2"/>
-            <input type = "button" class = "card" id = "c3"/>
-        </div>
-        <div id = "d">
-            <input type = "button" class = "card" id = "d0"/>
-            <input type = "button" class = "card" id = "d1"/>
-            <input type = "button" class = "card" id = "d2"/>
-            <input type = "button" class = "card" id = "d3"/>
-        </div>
+        <div class = "containerDiv">
+            <div class = "cardHolder" >
+                <div id = "a">
+                    <input type = "button" class = "card" id = "a0"/>
+                    <input type = "button" class = "card" id = "a1"/>
+                    <input type = "button" class = "card" id = "a2"/>
+                    <input type = "button" class = "card" id = "a3"/>
+                </div>
+                <div id = "b">
+                    <input type = "button" class = "card" id = "b0"/>
+                    <input type = "button" class = "card" id = "b1"/>
+                    <input type = "button" class = "card" id = "b2"/>
+                    <input type = "button" class = "card" id = "b3"/>
+                </div>
+                <div id = "c">
+                    <input type = "button" class = "card" id = "c0"/>
+                    <input type = "button" class = "card" id = "c1"/>
+                    <input type = "button" class = "card" id = "c2"/>
+                    <input type = "button" class = "card" id = "c3"/>
+                </div>
+                <div id = "d">
+                    <input type = "button" class = "card" id = "d0"/>
+                    <input type = "button" class = "card" id = "d1"/>
+                    <input type = "button" class = "card" id = "d2"/>
+                    <input type = "button" class = "card" id = "d3"/>
+                </div>
+            </div> 
+            <div class = "instructionPanel">
+                <h1>Memory Game</h1>
+                <p>Click two cards to turn them over. If they match, they will remain face up. 
+                    Otherwise, they will flip back over. Try to remember what was on each card 
+                    and where it was.</p>
+                <input type = "button" id = "startButton" value = "Click to Start Game" /> 
+            </div>
+       </div>
     </body>
     <footer>
         <script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src = "script.js"></script>
         <script language = "javascript">
             $(document).ready(randomizeCards);
-            $(document).ready(gameLogic);
+            $(document).ready(function () {
+                $('#startButton').on('click', gameLogic);
+            //$(document).ready(gameLogic);
+            });
         </script>
     </footer>

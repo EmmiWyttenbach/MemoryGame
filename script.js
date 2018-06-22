@@ -12,10 +12,10 @@
         "elephant https://razzonline.com/wp-content/uploads/2017/07/an-elephant-.jpg", 
         "giraffe https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/g/giraffe_thumb.JPG", 
         "giraffe https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/g/giraffe_thumb.JPG", 
-        "turtle https://upload.wikimedia.org/wikipedia/commons/9/9f/Giraffe_standing.jpg", 
-        "turtle https://upload.wikimedia.org/wikipedia/commons/9/9f/Giraffe_standing.jpg", 
-        "llama https://upload.wikimedia.org/wikipedia/commons/9/9f/Giraffe_standing.jpg", 
-        "llama https://upload.wikimedia.org/wikipedia/commons/9/9f/Giraffe_standing.jpg"];
+        "turtle https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Florida_Box_Turtle_Digon3_re-edited.jpg/1200px-Florida_Box_Turtle_Digon3_re-edited.jpg", 
+        "turtle https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Florida_Box_Turtle_Digon3_re-edited.jpg/1200px-Florida_Box_Turtle_Digon3_re-edited.jpg", 
+        "llama https://www.exoticmeatmarkets.com/v/vspfiles/photos/LLAMASAUSAGECAJUN16-2T.jpg", 
+        "llama https://www.exoticmeatmarkets.com/v/vspfiles/photos/LLAMASAUSAGECAJUN16-2T.jpg"];
 
         for(let i = 0; i < cardAssembly.length; i++)
          {
@@ -24,54 +24,49 @@
             cardAssembly[i] = cardAssembly[randomI];
             cardAssembly[randomI] = temp;
          }
+
          for(let x = 0; x < 4; x++)
          {
-            let space = cardAssembly[x].indexOf(' ');
-            let end = cardAssembly[x].length - 1;
-            let urlString = cardAssembly[x].substr(space,end);
-            console.log(urlString);
-            document.getElementById("a" + x).value = cardAssembly[x].substr(0,space);
-            document.getElementById("a" + x).style.backgroundImage = "url('"+urlString+"')";
+            let id = "a" + x;
+            document.getElementById(id).value = cardAssembly[x];
          }
          for(let x = 0; x < 4; x++)
          {
-            let space = cardAssembly[x+4].indexOf(' ');
-            let end = cardAssembly[x+4].length - 1;
-            let urlString = cardAssembly[x+4].substr(space,end);
-            document.getElementById("b" + x).value = cardAssembly[x+4].substr(0,space);
-            console.log(urlString);
-            
-            document.getElementById("b" + x).style.backgroundImage = "url('"+urlString+"')";
+            let id = "b" + x;
+            document.getElementById(id).value = cardAssembly[x+4];
          }
          for(let x = 0; x < 4; x++)
          {
-            let space = cardAssembly[x+8].indexOf(' ');
-            let end = cardAssembly[x+8].length - 1;
-            let urlString = cardAssembly[x+8].substr(space,end);
-            console.log(urlString);
-            document.getElementById("c" + x).value = cardAssembly[x+8].substr(0,space);
-            document.getElementById("c" + x).style.backgroundImage = "url('"+urlString+"')";
+            let id = "c" + x;
+            document.getElementById(id).value = cardAssembly[x+8];
          }
          for(let x = 0; x < 4; x++)
          {
-            let space = cardAssembly[x+12].indexOf(' ');
-            let end = cardAssembly[x+12].length - 1;
-            let urlString = cardAssembly[x+12].substr(space,end);
-            console.log(urlString);
-            document.getElementById("d" + x).value = cardAssembly[x+12].substr(0,space);
-            document.getElementById("d" + x).style.backgroundImage = "url('"+urlString+"')";
+            let id = "d" + x;
+            document.getElementById(id).value = cardAssembly[x+12];
          }
-        console.log(cardAssembly);
     }
 
  var gameLogic = function() {
         var countClicks = 0;
+        setTimeout(startGame,10);
+        setTimeout(checkIfGameFinished,10);
+        var whiteBackground = "https://kids.nationalgeographic.com/content/dam/kids/photos/games/Hub%20promos/memory.ngsversion.1438028331698.adapt.1900.1.png";
+        //"https://currys-ssl.cdn.dixons.com/grafx/images/blank.gif";
         $('.card').on('click', function() {
+
             if(countClicks == 0)
             {
-               document.getElementById(this.id).style.color = "white";
-               document.getElementById(this.id).className += " clicked";
-               countClicks++;
+                let cardString = document.getElementById(this.id).value;
+                let space = cardString.indexOf(' ');
+                let end = cardString.length - 1;
+                let urlString = cardString.substr(space,end);
+                document.getElementById(this.id).style.backgroundImage = "url('" + urlString + "')";
+                document.getElementById(this.id).style.backgroundSize = 'conatin';
+                //document.getElementById(this.id).style.color = "black";
+                document.getElementById(this.id).className += " clicked";
+                countClicks++;
+                // setTimeout(checkIfGameFinished,10);
             }
             else if(countClicks == 1)
             {
@@ -79,7 +74,12 @@
 
                 if(document.getElementById(this.id) != firstElementClicked[0])
                 {
-                   document.getElementById(this.id).style.color = "white";
+                    let cardString = document.getElementById(this.id).value;
+                    let space = cardString.indexOf(' ');
+                    let end = cardString.length - 1;
+                    let urlString = cardString.substr(space,end);
+                    document.getElementById(this.id).style.backgroundImage = "url('" + urlString + "')";
+                    document.getElementById(this.id).style.backgroundSize = 'conatin';
                    document.getElementById(this.id).className += " clicked";
                    countClicks++;
                 }
@@ -90,20 +90,77 @@
                var listOfClickedCards = document.getElementsByClassName("clicked");
                if(listOfClickedCards[0].value != listOfClickedCards[1].value)
                {
-                   listOfClickedCards[0].style.color = "transparent";
-                   listOfClickedCards[1].style.color = "transparent";
+                   listOfClickedCards[0].style.backgroundImage = "url('" + whiteBackground + "')";
+                   listOfClickedCards[1].style.backgroundImage = "url('" + whiteBackground + "')";
                }
-               else
-               {
-                   alert("good job they match");
-               }
+            //    else
+            //    {
+            //        alert("good job they match");
+            //    }
                listOfClickedCards[0].className = 'card';
                listOfClickedCards[0].className = 'card';
                countClicks = 0;
-               console.log(listOfClickedCards.length);
                }, 1000);
            } 
-           
         });
-        
+}
+
+var checkIfGameFinished = function()
+{
+    var listOfUrls = [];
+    var counter = 0;
+    for(let x = 0; x < 4; x++)
+    {
+        for(let i = 0; i < 4; i++)
+        {
+            var id;
+            if(x == 0)
+            {
+                id = "a"+i;
+            }
+            else if(x == 1)
+            {
+                id = "b"+i;
+            }
+            else if(x == 2)
+            {
+                id = "c"+i;
+            }
+            else if(x == 3)
+            {
+                id = "d"+i;
+            }
+            var urlReturnVal = $(id).css('background-image');
+            var urlEndVal = urlReturnVal.length - 1;
+            var url = urlReturnVal.substring(4,urlEndVal);
+            listOfUrls[counter] = url;
+            counter++;
+        }
+    }
+    alert(listOfUrls);
+}
+
+var startGame = function() 
+{
+    var backOfCard = "https://kids.nationalgeographic.com/content/dam/kids/photos/games/Hub%20promos/memory.ngsversion.1438028331698.adapt.1900.1.png";
+    for(let x = 0; x < 4; x++)
+    {
+       let id = "a" + x;
+       document.getElementById(id).style.backgroundImage = "url('" + backOfCard + "')";
+    }
+    for(let x = 0; x < 4; x++)
+    {
+       let id = "b" + x;
+       document.getElementById(id).style.backgroundImage = "url('" + backOfCard + "')";
+    }
+    for(let x = 0; x < 4; x++)
+    {
+       let id = "c" + x;
+       document.getElementById(id).style.backgroundImage = "url('" + backOfCard + "')";
+    }
+    for(let x = 0; x < 4; x++)
+    {
+       let id = "d" + x;
+       document.getElementById(id).style.backgroundImage = "url('" + backOfCard + "')";
+    }
 }
