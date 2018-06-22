@@ -121,7 +121,10 @@ var gameLogic = function() {
 var checkIfGameFinished = function() {
     if(numMatches == 8)
     {
-        alert("good job!");
+         alert("good job!");
+        document.getElementById("resartText").value = "Nice Job!";
+        document.getElementById('restartText').style.color = "black";
+        numMatches = 0;
     }
 }
 var checkIfMatchEasy = function () {
@@ -165,6 +168,11 @@ var startGame = function()
     document.getElementById("match").value = "Number of Matches: 0";
     document.getElementById("match").style.color = "black";
     var backOfCard = "https://kids.nationalgeographic.com/content/dam/kids/photos/games/Hub%20promos/memory.ngsversion.1438028331698.adapt.1900.1.png";
+    //"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI8Ys7E8W16lMMTJu5925VZt5clrxGWWcHeQvp0CjrBSli_yuT6w";
+    //"http://cliparts.co/cliparts/6Tp/6KE/6Tp6KEBGc.png";
+    //"http://laoblogger.com/images/floral-clipart-border-7.jpg";
+    //"https://png.kisspng.com/20171215/b36/5a341d7f48d561.7221002415133648632983.png";
+    //
     for(let x = 0; x < 4; x++)
     {
        let id = "a" + x;
