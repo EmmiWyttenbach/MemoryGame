@@ -30,13 +30,16 @@
                 </div>
             </div> 
             <div class = "instructionPanel">
-                <h1>Memory Game</h1>
-                <p>Click two cards to turn them over. If they match, they will remain face up. 
-                    Otherwise, they will flip back over. Try to remember what was on each card 
-                    and where it was.</p>
-                <input id = "startButton" value = "Number of matches: " /> 
-                <input type = "button" id = "startButtonEasy" value = "Easy" /> 
-                <input type = "button" id = "startButtonHard" value = "Hard" /> 
+                <h1 class = "instructions">Memory Game</h1>
+                <p class = "instructions">Click two cards to turn them over. In the easy version, if they match, they will remain face up. 
+                    The hard version will flip the cards back over regardless if they match or not. The number of matches found
+                    will be recorded and updated throughout the game in both versions. To succeed more quickly, try to remember 
+                    what was on each card and where it was.</p>
+                <input type = "button" class = "instructionPanelElements" id = "startButtonEasy" value = "Easy" /> 
+                <br>
+                <input type = "button" class = "instructionPanelElements" id = "startButtonHard" value = "Hard" /> 
+                <br>
+                <input id = "match"/> 
             </div>
        </div>
     </body>
@@ -45,15 +48,8 @@
         <script src = "script.js"></script>
         <script language = "javascript">
             $(document).ready(randomizeCards);
-            $(document).ready(function () {
-                $('#startButtonEasy').on('click', gameLogic());//(false));
-              //  $('#startButtonHard').on('click', gameLogic);// console.log('HI'));
-              //  $('#startButtonHard').on('click', gameLogic(false));
-            //$(document).ready(gameLogic);
-            });
-
-            // $(document).ready(function () {
-            //     $('#startButtonHard').on('click', gameLogic(false));
-            // });
+           // $(document).ready(start);
+            $(document).ready(gameLogic);
+           // $(document).ready($("#startButtonHard").click(gameLogic));
         </script>
     </footer>
